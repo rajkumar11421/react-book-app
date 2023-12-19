@@ -10,14 +10,15 @@ function App() {
     <div>
       
     <HeaderComponent/>
+
     <BrowserRouter>
-    <Routes>
-      	<Route path="/" element={<ListBookComponent />}/>
-        <Route path = "/books" element={<ListBookComponent />} />
-        <Route path="/add-book" element={<AddBookComponent />} />
-        <Route path="/edit-book/:id" element={<AddBookComponent />} />
-    </Routes>
-  </BrowserRouter>
+	    <Routes>
+	      	<Route path="/" element={<ListBookComponent />}/>
+	        <Route path = "/books" element={<ListBookComponent />} />
+	        <Route path="/add-book" element={<AddBookComponent />} />
+	        <Route path="/edit-book/:id" element={<AddBookComponent />} />
+	    </Routes>
+    </BrowserRouter>
     </div>
   );
 }
