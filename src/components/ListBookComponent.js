@@ -37,9 +37,8 @@ const ListBookComponent = () => {
             <table className="table table-bordered table-striped">
                 <thead>
                     <th> Book Id </th>
-                    <th> Book First Name </th>
-                    <th> Book Last Name </th>
-                    <th> Book Email Id </th>
+                    <th> Book Title </th>
+                    <th> Book Price </th>
                     <th> Actions </th>
                 </thead>
                 <tbody>
@@ -48,9 +47,8 @@ const ListBookComponent = () => {
                             book =>
                             <tr key = {book.id}> 
                                 <td> {book.id} </td>
-                                <td> {book.firstName} </td>
-                                <td>{book.lastName}</td>
-                                <td>{book.emailId}</td>
+                                <td> {book.title} </td>
+                                <td>{book.price}</td>
                                 <td>
                                     <Link className="btn btn-info" to={`/edit-book/${book.id}`} >Update</Link>
                                     <button className = "btn btn-danger" onClick = {() => deleteBook(book.id)}

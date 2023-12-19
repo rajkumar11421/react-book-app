@@ -4,16 +4,15 @@ import BookService from '../services/BookService'
 
 const AddBookComponent = () => {
 
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [emailId, setEmailId] = useState('')
+    const [title, setTitle] = useState('')
+    const [price, setPrice] = useState('')
     const history = useNavigate();
     const {id} = useParams();
 
     const saveOrUpdateBook = (e) => {
         e.preventDefault();
 
-        const book = {firstName, lastName, emailId}
+        const book = {title, price}
 
         if(id){
             BookService.updateBook(id, book).then((response) => {
@@ -39,15 +38,14 @@ const AddBookComponent = () => {
     useEffect(() => {
 
         BookService.getBookById(id).then((response) =>{
-            setFirstName(response.data.firstName)
-            setLastName(response.data.lastName)
-            setEmailId(response.data.emailId)
+            setTitle(response.data.title)
+            setPrice(response.data.price)
         }).catch(error => {
             console.log(error)
         })
     }, [])
 
-    const title = () => {
+    const pageTitle = () => {
 
         if(id){
             return <h2 className = "text-center">Update Book</h2>
@@ -63,45 +61,32 @@ const AddBookComponent = () => {
                 <div className = "row">
                     <div className = "card col-md-6 offset-md-3 offset-md-3">
                        {
-                           title()
+                    	   pageTitle()
                        }
                         <div className = "card-body">
                             <form>
                                 <div className = "form-group mb-2">
-                                    <label className = "form-label"> First Name :</label>
+                                    <label className = "form-label"> Title:</label>
                                     <input
                                         type = "text"
-                                        placeholder = "Enter first name"
-                                        name = "firstName"
+                                        placeholder = "Enter title"
+                                        name = "title"
                                         className = "form-control"
-                                        value = {firstName}
-                                        onChange = {(e) => setFirstName(e.target.value)}
+                                        value = {title}
+                                        onChange = {(e) => setTitle(e.target.value)}
                                     >
                                     </input>
                                 </div>
 
                                 <div className = "form-group mb-2">
-                                    <label className = "form-label"> Last Name :</label>
+                                    <label className = "form-label"> Price :</label>
                                     <input
                                         type = "text"
-                                        placeholder = "Enter last name"
-                                        name = "lastName"
+                                        placeholder = "Enter price"
+                                        name = "price"
                                         className = "form-control"
-                                        value = {lastName}
-                                        onChange = {(e) => setLastName(e.target.value)}
-                                    >
-                                    </input>
-                                </div>
-
-                                <div className = "form-group mb-2">
-                                    <label className = "form-label"> Email Id :</label>
-                                    <input
-                                        type = "email"
-                                        placeholder = "Enter email Id"
-                                        name = "emailId"
-                                        className = "form-control"
-                                        value = {emailId}
-                                        onChange = {(e) => setEmailId(e.target.value)}
+                                        value = {price}
+                                        onChange = {(e) => setPrice(e.target.value)}
                                     >
                                     </input>
                                 </div>
